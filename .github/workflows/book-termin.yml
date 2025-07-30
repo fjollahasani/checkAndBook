@@ -1,9 +1,10 @@
 name: Run Termin Booking
 
+
 on:
   schedule:
-    - cron: '*/10 * * * *' # every 10 minutes
-  workflow_dispatch:       # manual trigger from GitHub UI
+    - cron: '*/10 * * * *'  # every 10 minutes
+  workflow_dispatch:         # manual trigger
 
 jobs:
   book-termin:
@@ -13,10 +14,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Clean npm cache
+        run: npm cache clean --force
+
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 20  # Use Node 20 like your local environment
 
       - name: Install dependencies
         run: npm install
