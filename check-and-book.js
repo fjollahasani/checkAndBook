@@ -2,9 +2,9 @@ const puppeteer = require('puppeteer');
 
 (async () => {
   const browser = await puppeteer.launch({
-    headless: false,
+    headless: true,
+    args: ['--no-sandbox', '--disable-setuid-sandbox'],
     defaultViewport: null,
-    args: ['--start-maximized'],
   });
 
   const page = await browser.newPage();
@@ -53,7 +53,7 @@ const puppeteer = require('puppeteer');
     );
     console.log('🗓️ Found slots:', JSON.stringify(slotInfo, null, 2));
 
-    const targetDate = new Date('2025-08-18');
+    const targetDate = new Date('2025-08-1');
     let slotClicked = false;
 
     const slotElements = await page.$$('#divSlotsList li.timeslot');
