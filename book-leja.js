@@ -5,7 +5,7 @@ function cssEscape(ident) {
 }
 
 (async () => {
-  const browser = await puppeteer.launch({ headless: false, defaultViewport: null });
+  const browser = await puppeteer.launch({ headless: true, defaultViewport: null });
   const page = await browser.newPage();
 
   const url = 'https://citizen.bmi.gv.at/at.gv.bmi.fnsetvweb-p/etv/public/sva/Terminvereinbarung?locale=de';

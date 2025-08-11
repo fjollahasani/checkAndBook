@@ -10,6 +10,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "css.escape": "^1.5.1",
     "puppeteer": "^24.15.0"
   }
 }
