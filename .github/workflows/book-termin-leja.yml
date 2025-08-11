@@ -3,7 +3,7 @@ name: Run Termin Booking Leja
 on:
   schedule:
     - cron: '*/30 * * * *'  # every 30 minutes
-  workflow_dispatch:         # manual trigger from GitHub UI
+  workflow_dispatch:
 
 jobs:
   book-termin:
@@ -21,14 +21,13 @@ jobs:
       - name: Clean npm cache
         run: npm cache clean --force
 
-      - name: Remove Puppeteer cache
-        run: rm -rf /home/runner/.cache/puppeteer
-
       - name: Install dependencies
         run: npm install
 
-      - name: Install Puppeteer browsers (Chromium)
-        run: npx puppeteer install
+      - name: Install Chromium browser
+        run: sudo apt-get update && sudo apt-get install -y chromium-browser
 
       - name: Run Puppeteer script
+        env:
+          PUPPETEER_EXECUTABLE_PATH: /usr/bin/chromium-browser
         run: node book-leja.js
