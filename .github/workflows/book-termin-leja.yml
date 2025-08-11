@@ -2,7 +2,7 @@ name: Run Termin Booking Leja
 
 on:
   schedule:
-    - cron: '*/30 * * * *'  # every 30 minutes
+    - cron: '*/30 * * * *'
   workflow_dispatch:
 
 jobs:
@@ -24,10 +24,13 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Install Chromium browser
-        run: sudo apt-get update && sudo apt-get install -y chromium-browser
+      - name: Install Google Chrome stable
+        run: |
+          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo apt-get install -y ./google-chrome-stable_current_amd64.deb
+          rm google-chrome-stable_current_amd64.deb
 
       - name: Run Puppeteer script
         env:
-          PUPPETEER_EXECUTABLE_PATH: /usr/bin/chromium-browser
+          PUPPETEER_EXECUTABLE_PATH: /usr/bin/google-chrome-stable
         run: node book-leja.js
