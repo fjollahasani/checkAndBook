@@ -2,8 +2,8 @@ name: Run Termin Booking Leja
 
 on:
   schedule:
-    - cron: '*/30 * * * *' # every 30 minutes
-  workflow_dispatch:       # manual trigger from GitHub UI
+    - cron: '*/30 * * * *'  # every 30 minutes
+  workflow_dispatch:         # manual trigger from GitHub UI
 
 jobs:
   book-termin:
@@ -21,8 +21,14 @@ jobs:
       - name: Clean npm cache
         run: npm cache clean --force
 
+      - name: Remove Puppeteer cache
+        run: rm -rf /home/runner/.cache/puppeteer
+
       - name: Install dependencies
         run: npm install
+
+      - name: Install Puppeteer browsers (Chromium)
+        run: npx puppeteer install
 
       - name: Run Puppeteer script
         run: node book-leja.js
