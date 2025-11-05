@@ -82,12 +82,12 @@ await new Promise(resolve => setTimeout(resolve, 1000));
 
   await fillInput('nachname#terminanfrage@.@main', 'HASANI');
   await fillInput('vorname#terminanfrage@.@main', 'FJOLLA');
-  await fillInput('geburtsdatum#terminanfrage@.@main', '14.09.1993');
-  await fillInput('telefonnummer#terminanfrage@.@main', '+4367763136131');
+  await fillInput('geburtsdatum#terminanfrage@.@main', 'bday');
+  await fillInput('telefonnummer#terminanfrage@.@main', 'number');
   await fillInput('gemeinde#terminanfrage@.@main', 'Graz');
-  await fillInput('strasse#terminanfrage@.@main', 'Kreuzgasse 34');
+  await fillInput('strasse#terminanfrage@.@main', 'address');
   await fillInput('hausnummer#terminanfrage@.@main', '34');
-  await fillInput('tuer#terminanfrage@.@main', '12');
+  await fillInput('tuer#terminanfrage@.@main', '');
   await fillInput('plz#terminanfrage@.@main', '8010');
   await fillInput('ort#terminanfrage@.@main', 'Graz');
   await fillInput('email#terminanfrage@.@main', 'fjolla.h14@gmail.com');
